@@ -11,7 +11,7 @@ resource "aws_instance" "my-instance"{
      key_name= "terra-key"
 
     tags={
-    name=" first-instance"
+      Name=" first-instance"
     }
 
 
