@@ -1,4 +1,4 @@
-#Terraform State File
+# Terraform State File
 
 Terraform is an Infrastructure as Code (IaC) tool used to define and provision infrastructure resources. The Terraform state file is a crucial component of Terraform that helps it keep track of the resources it manages and their current state. This file, often named terraform.tfstate, is a JSON or HCL (HashiCorp Configuration Language) formatted file that contains important information about the infrastructure's current state, such as resource attributes, dependencies, and metadata.
 
@@ -36,6 +36,7 @@ terraform {
     dynamodb_table = "your-dynamodb-table"
   }
 }
+
 Replace "your-terraform-state-bucket" and "path/to/your/terraform.tfstate" with your S3 bucket and desired state file path.
 
 DynamoDB Table for State Locking:
@@ -51,6 +52,7 @@ Create a DynamoDB Table:
 You can create a DynamoDB table using the AWS Management Console or AWS CLI. Here's an AWS CLI example:
 
 aws dynamodb create-table --table-name your-dynamodb-table --attribute-definitions AttributeName=LockID,AttributeType=S --key-schema AttributeName=LockID,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+
 Configure the DynamoDB Table in Terraform Backend Configuration:
 
 In your Terraform configuration, as shown above, provide the DynamoDB table name in the dynamodb_table field under the backend configuration.
@@ -85,11 +87,13 @@ By following these steps, you can securely store your Terraform state in S3 with
        dynamodb_table = "your-dynamodb-table"
      }
    }
+   
 Replace "your-terraform-state-bucket" and "path/to/your/terraform.tfstate" with your S3 bucket and desired state file path.
 
 Create a DynamoDB Table for State Locking:
 
 aws dynamodb create-table --table-name your-dynamodb-table --attribute-definitions AttributeName=LockID,AttributeType=S --key-schema AttributeName=LockID,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+
 Replace "your-dynamodb-table" with the desired DynamoDB table name.
 
 Configure the DynamoDB table name in your Terraform backend configuration, as shown in step 1.
