@@ -1,5 +1,4 @@
-main.tf  terraform.tfstate  terraform.tfstate.backup
-ubuntu@ip-172-31-16-182:~/terra-project$ cat main.tf 
+
 provider "aws" {
   region= "us-east-1"
 }
